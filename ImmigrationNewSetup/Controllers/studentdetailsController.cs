@@ -13,7 +13,7 @@ namespace ImmigrationNewSetup.Controllers
     public class studentdetailsController : Controller
     {
         private dbcontext db = new dbcontext();
-
+      
         // GET: studentdetails
         public ActionResult Index()
         {
@@ -27,6 +27,7 @@ namespace ImmigrationNewSetup.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name");
             studentdetail studentdetail = db.studentdetails.Find(id);
             if (studentdetail == null)
             {
@@ -41,6 +42,7 @@ namespace ImmigrationNewSetup.Controllers
             studentdetail student = new studentdetail();
             student.date = System.DateTime.Now;
             student.dob = System.DateTime.Now;
+            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name");
             return View(student);
         }
 
@@ -49,7 +51,7 @@ namespace ImmigrationNewSetup.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentId,name,dob,gender,fathername,mothername,address,phone,phone2,email,married,board,qualification,marks,gap,gapdetail,refusal,refusaldetail,intake,note,uid,TrackingID,Editingdate,date,Status")] studentdetail studentdetail)
+        public ActionResult Create([Bind(Include = "StudentId,name,dob,gender,fathername,mothername,address,phone,phone2,email,married,board,qualification,marks,gap,gapdetail,refusal,refusaldetail,filetype,country,intake,year,itr,note,uid,TrackingID,Editingdate,date,Status")] studentdetail studentdetail)
         {
             if (ModelState.IsValid)
             {
@@ -64,8 +66,9 @@ namespace ImmigrationNewSetup.Controllers
 
                     string[] rec = valc.Split('_');
                     var ab = rec[1].ToString();
-                    studentdetail.TrackingID = (Convert.ToInt32(ab) + 1).ToString();
+                    studentdetail.TrackingID = "TRK_" + (Convert.ToInt32(ab) + 1).ToString();
                 }
+                studentdetail.Status = true;
                 studentdetail.Editingdate = System.DateTime.Now;
                 studentdetail.uid = Session["User"].ToString();
                 db.studentdetails.Add(studentdetail);
@@ -84,6 +87,7 @@ namespace ImmigrationNewSetup.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name");
             studentdetail studentdetail = db.studentdetails.Find(id);
             if (studentdetail == null)
             {
@@ -97,7 +101,7 @@ namespace ImmigrationNewSetup.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StudentId,name,dob,gender,fathername,mothername,address,phone,phone2,email,married,board,qualification,marks,gap,gapdetail,refusal,refusaldetail,intake,note,uid,TrackingID,Editingdate,date,Status")] studentdetail studentdetail)
+        public ActionResult Edit([Bind(Include = "StudentId,name,dob,gender,fathername,mothername,address,phone,phone2,email,married,board,qualification,marks,gap,gapdetail,refusal,refusaldetail,filetype,country,intake,year,itr,note,uid,TrackingID,Editingdate,date,Status")] studentdetail studentdetail)
         {
             if (ModelState.IsValid)
             {
@@ -118,6 +122,7 @@ namespace ImmigrationNewSetup.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name");
             studentdetail studentdetail = db.studentdetails.Find(id);
             if (studentdetail == null)
             {
@@ -132,6 +137,7 @@ namespace ImmigrationNewSetup.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             studentdetail studentdetail = db.studentdetails.Find(id);
+            //ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name");
             db.studentdetails.Remove(studentdetail);
             db.SaveChanges();
             TempData["Success"] = "Deleted Successfully";
@@ -145,6 +151,10 @@ namespace ImmigrationNewSetup.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult Docs(int student)
+        {
+            return RedirectToAction("Create", "Studentdocs", new { studentid = student });
         }
     }
 }

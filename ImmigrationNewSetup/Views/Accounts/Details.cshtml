@@ -16,7 +16,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.date)
+            @Convert.ToDateTime(Model.date).ToString("dd/MM/yyyy")
+            @*@Html.DisplayFor(model => model.date)*@
         </dd>
 
         <dt>
@@ -78,6 +79,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-danger" }) |
      @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
 </p>

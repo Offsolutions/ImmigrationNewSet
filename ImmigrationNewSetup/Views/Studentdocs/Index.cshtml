@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ImmigrationNewSetup.Models.Studentdocs>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2><b>Index</b></h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "Create", "", new { @class = "btn btn-primary" })
+    </p>*@
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover" id="table1">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.profile)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.education)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.family)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.other)
+                </th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.profile)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.education)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.family)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.other)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "label label-warning" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "label label-primary" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "label label-danger" })
+                    </td>
+                </tr>
+            }
+
+    </table>
+    </div>

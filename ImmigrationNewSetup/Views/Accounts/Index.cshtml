@@ -38,14 +38,14 @@
                 <th>
                     @Html.DisplayNameFor(model => model.status)
                 </th>
-                <th></th>
+                <th>Action</th>
             </tr>
         </thead>
         @foreach (var item in Model)
             {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.date)
+                    @Convert.ToDateTime(item.date).ToString("dd/MM/yyyy")
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.name)

@@ -15,10 +15,13 @@ namespace ImmigrationNewSetup.Controllers
     public class AccountsController : Controller
     {
         private dbcontext db = new dbcontext();
+        Helper Help = new Helper();
 
         // GET: Accounts
         public ActionResult Index()
         {
+            Account account = db.Accounts.FirstOrDefault();
+            account.password = Help.DecryptData(account.password);
             return View(db.Accounts.ToList());
         }
 
@@ -30,6 +33,7 @@ namespace ImmigrationNewSetup.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Account account = db.Accounts.Find(id);
+            account.password = Help.DecryptData(account.password);
             if (account == null)
             {
                 return HttpNotFound();
@@ -54,6 +58,7 @@ namespace ImmigrationNewSetup.Controllers
         {
             if (ModelState.IsValid)
             {
+                account.password= Help.EncryptData(account.password);
                 db.Accounts.Add(account);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -70,6 +75,7 @@ namespace ImmigrationNewSetup.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Account account = db.Accounts.Find(id);
+            account.password = Help.DecryptData(account.password);
             if (account == null)
             {
                 return HttpNotFound();
@@ -86,6 +92,7 @@ namespace ImmigrationNewSetup.Controllers
         {
             if (ModelState.IsValid)
             {
+                account.password = Help.EncryptData(account.password);
                 db.Entry(account).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -101,6 +108,7 @@ namespace ImmigrationNewSetup.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Account account = db.Accounts.Find(id);
+            account.password = Help.DecryptData(account.password);
             if (account == null)
             {
                 return HttpNotFound();
@@ -114,6 +122,7 @@ namespace ImmigrationNewSetup.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Account account = db.Accounts.Find(id);
+            account.password = Help.DecryptData(account.password);
             db.Accounts.Remove(account);
             db.SaveChanges();
             return RedirectToAction("Index");
@@ -133,7 +142,7 @@ namespace ImmigrationNewSetup.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(Account model, string returnUrl, Helper Help)
+        public ActionResult Login(Account model, string returnUrl)
         {
             dbcontext db = new dbcontext();
             var passw = Help.EncryptData(model.password);

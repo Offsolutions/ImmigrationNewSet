@@ -196,7 +196,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\studentdetailsController.cs" />
+    <Compile Include="Controllers\StudentdocsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -489,11 +491,22 @@
     <Content Include="Views\studentdetails\Details.cshtml" />
     <Content Include="Views\studentdetails\Edit.cshtml" />
     <Content Include="Views\studentdetails\Index.cshtml" />
-    <Content Include="Views\Accounts\Login.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Accounts\Login.cshtml" />
+    <Content Include="Views\Studentdocs\Create.cshtml" />
+    <Content Include="Views\Studentdocs\Delete.cshtml" />
+    <Content Include="Views\Studentdocs\Details.cshtml" />
+    <Content Include="Views\Studentdocs\Edit.cshtml" />
+    <Content Include="Views\Studentdocs\Index.cshtml" />
+    <Content Include="Views\Countries\Create.cshtml" />
+    <Content Include="Views\Countries\Delete.cshtml" />
+    <Content Include="Views\Countries\Details.cshtml" />
+    <Content Include="Views\Countries\Edit.cshtml" />
+    <Content Include="Views\Countries\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="UploadedFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

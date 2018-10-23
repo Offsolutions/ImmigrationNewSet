@@ -15,6 +15,12 @@
         <thead>
             <tr>
                 <th>
+                    @Html.DisplayNameFor(model => model.StudentId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TrackingID)
+                </th>
+                <th>
                     @Html.DisplayNameFor(model => model.name)
                 </th>
                 <th>
@@ -24,7 +30,7 @@
                     @Html.DisplayNameFor(model => model.phone)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.email)
+                    @Html.DisplayNameFor(model => model.address)
                 </th>
                 <th>
                     @Html.DisplayNameFor(model => model.intake)
@@ -38,12 +44,18 @@
                 <th>
                     @Html.DisplayNameFor(model => model.Status)
                 </th>
-                <th></th>
+                <th>Action</th>
             </tr>
             </thead>
             @foreach (var item in Model)
             {
                 <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TrackingID)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.name)
                     </td>
@@ -54,16 +66,16 @@
                         @Html.DisplayFor(modelItem => item.phone)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.email)
+                        @Html.DisplayFor(modelItem => item.address)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.intake)
+                        @Html.DisplayFor(modelItem => item.intake) @Html.DisplayFor(model => item.year)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.uid)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.date)
+                        @Convert.ToDateTime(item.date).ToString("dd/MM/yyyy")
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.Status)
@@ -71,7 +83,8 @@
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }, new { @class = "label label-warning" }) |
                         @Html.ActionLink("Details", "Details", new { id = item.StudentId }, new { @class = "label label-primary" }) |
-                        @Html.ActionLink("Delete", "Delete", new { id = item.StudentId }, new { @class = "label label-danger" })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.StudentId }, new { @class = "label label-danger" }) |
+                        @Html.ActionLink("Docs", "Docs", new { student = item.StudentId }, new { @class = "label label-success" })
                     </td>
                 </tr>
             }

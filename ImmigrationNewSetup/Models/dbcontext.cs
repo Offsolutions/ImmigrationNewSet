@@ -18,5 +18,9 @@ namespace ImmigrationNewSetup.Models
         public System.Data.Entity.DbSet<ImmigrationNewSetup.Models.Account> Accounts { get; set; }
 
         public System.Data.Entity.DbSet<ImmigrationNewSetup.Models.studentdetail> studentdetails { get; set; }
+
+        public System.Data.Entity.DbSet<ImmigrationNewSetup.Models.Studentdocs> Studentdocs { get; set; }
+
+        public System.Data.Entity.DbSet<ImmigrationNewSetup.Models.Country> Countries { get; set; }
     }
 }

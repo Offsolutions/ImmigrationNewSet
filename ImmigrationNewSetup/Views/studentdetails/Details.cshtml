@@ -24,7 +24,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.dob)
+            @Convert.ToDateTime(Model.dob).ToString("dd/MM/yyyy")
         </dd>
 
         <dt>
@@ -150,9 +150,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.intake)
+            @Html.DisplayFor(model => model.intake) @Html.DisplayFor(model => model.year)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.itr)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.itr)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.note)
         </dt>
@@ -182,7 +188,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Editingdate)
+            @Convert.ToDateTime(Model.Editingdate).ToString("dd/MM/yyyy")
         </dd>
 
         <dt>
@@ -190,7 +196,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.date)
+            @Convert.ToDateTime(Model.date).ToString("dd/MM/yyyy")
         </dd>
 
         <dt>

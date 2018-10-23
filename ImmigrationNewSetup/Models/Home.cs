@@ -91,10 +91,18 @@ namespace ImmigrationNewSetup.Models
         public string refusal { get; set; }
         [Display(Name = "Refusal Detail")]
         public string refusaldetail { get; set; }
+        [Display(Name = "File Type")]
+        public string filetype { get; set; }
+        [Display(Name = "Country Name")]
+        public string country { get; set; }
         [Display(Name = "Intake")]
         public string intake { get; set; }
+        [Display(Name = "Year")]
+        public string year { get; set; }
         [Display(Name = "Note")]
         public string note { get; set; }
+        [Display(Name = "ITR")]
+        public string itr { get; set; }
         [Display(Name = "User")]
         public string uid { get; set; }
        
@@ -124,6 +132,14 @@ namespace ImmigrationNewSetup.Models
         ICSE,
         Other
     }
+    public enum filetype
+    {
+        Study,
+        PR,
+        Visitor,
+        Multiple,
+        Other
+    }
     public enum intake
     {
         Jan,
@@ -138,5 +154,31 @@ namespace ImmigrationNewSetup.Models
         Oct,
         Nov,
         Dec
+    }
+    public class Studentdocs
+    {
+        [Key]
+        public int Id { get; set; }
+        
+        public int StudentId { get; set; }
+        [Display(Name = "Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime date { get; set; }
+        [Display(Name = "Profile Pic")]
+        public string profile { get; set; }
+        [Display(Name = "Educational Documents")]
+        public string education { get; set; }
+        [Display(Name = "Family Documents")]
+        public string family { get; set; }
+        [Display(Name = "Other Documents")]
+        public string other { get; set; }
+    }
+    public class Country
+    {
+        [Key]
+        public int Id { get; set; }
+        [Display(Name = "Country Name")]
+        public string Name { get; set; }
     }
 }

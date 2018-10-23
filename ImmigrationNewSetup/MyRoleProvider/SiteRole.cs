@@ -50,10 +50,9 @@ namespace MvcFeeManage.MyRoleProvider
         public override string[] GetRolesForUser(string username)
         {
             dbcontext db = new dbcontext();
-            // string data = db.tblreceptionists.Where(x => x.login == username).FirstOrDefault().Type;
-            //string[] result = { data };
-            //return result;
-            return null;
+            string data = db.Accounts.Where(x => x.login == username).FirstOrDefault().UserType;
+            string[] result = { data };
+            return result;
         }
 
         public override string[] GetUsersInRole(string roleName)
