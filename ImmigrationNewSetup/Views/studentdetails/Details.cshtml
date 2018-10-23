@@ -1,0 +1,209 @@
+﻿@model ImmigrationNewSetup.Models.studentdetail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>studentdetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dob)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dob)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fathername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fathername)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mothername)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mothername)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.phone2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.married)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.married)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.board)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.board)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qualification)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qualification)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marks)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gap)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gap)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gapdetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gapdetail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.refusal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.refusal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.refusaldetail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.refusaldetail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.intake)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.intake)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.uid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.uid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrackingID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrackingID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Editingdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Editingdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentId }) |
+     @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
+</p>
