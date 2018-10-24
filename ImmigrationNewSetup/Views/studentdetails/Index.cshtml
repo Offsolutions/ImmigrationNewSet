@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<ImmigrationNewSetup.Models.studentdetail>
-
+@using ImmigrationNewSetup.Models;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var active = "Active";
+    var Deactive = "Deactive";
+    dbcontext db = new dbcontext();
 }
 
 <h2><b>Index</b></h2>
@@ -72,13 +75,22 @@
                         @Html.DisplayFor(modelItem => item.intake) @Html.DisplayFor(model => item.year)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.uid)
+                        @{ var username = db.Accounts.Where(c => c.Id == item.uid).FirstOrDefault().name;}
+                        @username.ToString()
+                        @*@Html.DisplayFor(modelItem => item.uid)*@
                     </td>
                     <td>
                         @Convert.ToDateTime(item.date).ToString("dd/MM/yyyy")
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Status)
+                        @if (item.Status == true)
+                        {
+                            <span class="label label-success">@active.ToString()</span>
+                        }
+                        else
+                        {
+                            <span class="label label-danger">@Deactive.ToString()</span>
+                        }
                     </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }, new { @class = "label label-warning" }) |

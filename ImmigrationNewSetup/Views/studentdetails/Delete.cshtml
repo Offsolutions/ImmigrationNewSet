@@ -1,8 +1,9 @@
 ﻿@model ImmigrationNewSetup.Models.studentdetail
-
+@using ImmigrationNewSetup.Models;
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    dbcontext db = new dbcontext();
 }
 
 <h2>Delete</h2>
@@ -173,7 +174,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.uid)
+            @{ var username = db.Accounts.Where(c => c.Id == Model.uid).FirstOrDefault().name;}
+            @username.ToString()
         </dd>
 
         <dt>

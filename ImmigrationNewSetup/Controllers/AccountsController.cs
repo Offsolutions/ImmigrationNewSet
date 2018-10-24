@@ -20,8 +20,8 @@ namespace ImmigrationNewSetup.Controllers
         // GET: Accounts
         public ActionResult Index()
         {
-            Account account = db.Accounts.FirstOrDefault();
-            account.password = Help.DecryptData(account.password);
+            //Account account = db.Accounts.FirstOrDefault();
+            //account.password = Help.DecryptData(account.password);
             return View(db.Accounts.ToList());
         }
 

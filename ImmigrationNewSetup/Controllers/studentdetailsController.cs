@@ -27,7 +27,7 @@ namespace ImmigrationNewSetup.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name");
+            ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name");
             studentdetail studentdetail = db.studentdetails.Find(id);
             if (studentdetail == null)
             {
@@ -42,7 +42,7 @@ namespace ImmigrationNewSetup.Controllers
             studentdetail student = new studentdetail();
             student.date = System.DateTime.Now;
             student.dob = System.DateTime.Now;
-            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name");
+            ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name");
             return View(student);
         }
 
@@ -70,7 +70,7 @@ namespace ImmigrationNewSetup.Controllers
                 }
                 studentdetail.Status = true;
                 studentdetail.Editingdate = System.DateTime.Now;
-                studentdetail.uid = Session["User"].ToString();
+                studentdetail.uid = Convert.ToInt32(Session["User"].ToString());
                 db.studentdetails.Add(studentdetail);
                 db.SaveChanges();
                 TempData["Success"] = "Saved Successfully";
@@ -87,7 +87,7 @@ namespace ImmigrationNewSetup.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name");
+            ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name");
             studentdetail studentdetail = db.studentdetails.Find(id);
             if (studentdetail == null)
             {
@@ -106,7 +106,7 @@ namespace ImmigrationNewSetup.Controllers
             if (ModelState.IsValid)
             {
                 studentdetail.Editingdate = System.DateTime.Now;
-                studentdetail.uid = Session["User"].ToString();
+                studentdetail.uid =Convert.ToInt32(Session["User"].ToString());
                 db.Entry(studentdetail).State = EntityState.Modified;
                 db.SaveChanges();
                 TempData["Success"] = "Updated Successfully";
@@ -122,7 +122,7 @@ namespace ImmigrationNewSetup.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "Name");
+            ViewBag.CountryId = new SelectList(db.Countries, "Id", "Name");
             studentdetail studentdetail = db.studentdetails.Find(id);
             if (studentdetail == null)
             {

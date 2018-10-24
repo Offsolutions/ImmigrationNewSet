@@ -10,107 +10,114 @@ using ImmigrationNewSetup.Models;
 
 namespace ImmigrationNewSetup.Controllers
 {
-    public class CountriesController : Controller
+    public class AssignedFilesController : Controller
     {
         private dbcontext db = new dbcontext();
 
-        // GET: Countries
+        // GET: AssignedFiles
         public ActionResult Index()
         {
-            return View(db.Countries.ToList());
+            return View(db.AssignedFiles.ToList());
         }
 
-        // GET: Countries/Details/5
+        // GET: AssignedFiles/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = db.Countries.Find(id);
-            if (country == null)
+            AssignedFiles assignedFiles = db.AssignedFiles.Find(id);
+            if (assignedFiles == null)
             {
                 return HttpNotFound();
             }
-            return View(country);
+            return View(assignedFiles);
         }
 
-        // GET: Countries/Create
+        // GET: AssignedFiles/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Countries/Create
+        // POST: AssignedFiles/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Country country)
+        public ActionResult Create([Bind(Include = "Id,UserID,StudentId,uid,date")] AssignedFiles assignedFiles, FormCollection coll, int[] StudentId,int username)
         {
             if (ModelState.IsValid)
             {
-                db.Countries.Add(country);
-                db.SaveChanges();
+                foreach (var a in StudentId)
+                {
+                    assignedFiles.StudentId = a;
+                    assignedFiles.UserID = username;
+                    assignedFiles.uid = Convert.ToInt32(Session["User"].ToString());
+                    assignedFiles.date = System.DateTime.Now;
+                    db.AssignedFiles.Add(assignedFiles);
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
 
-            return View(country);
+            return View(assignedFiles);
         }
 
-        // GET: Countries/Edit/5
+        // GET: AssignedFiles/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = db.Countries.Find(id);
-            if (country == null)
+            AssignedFiles assignedFiles = db.AssignedFiles.Find(id);
+            if (assignedFiles == null)
             {
                 return HttpNotFound();
             }
-            return View(country);
+            return View(assignedFiles);
         }
 
-        // POST: Countries/Edit/5
+        // POST: AssignedFiles/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] Country country)
+        public ActionResult Edit([Bind(Include = "Id,UserID,StudentId,uid,date")] AssignedFiles assignedFiles)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(country).State = EntityState.Modified;
+                db.Entry(assignedFiles).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(country);
+            return View(assignedFiles);
         }
 
-        // GET: Countries/Delete/5
+        // GET: AssignedFiles/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = db.Countries.Find(id);
-            if (country == null)
+            AssignedFiles assignedFiles = db.AssignedFiles.Find(id);
+            if (assignedFiles == null)
             {
                 return HttpNotFound();
             }
-            return View(country);
+            return View(assignedFiles);
         }
 
-        // POST: Countries/Delete/5
+        // POST: AssignedFiles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Country country = db.Countries.Find(id);
-            db.Countries.Remove(country);
+            AssignedFiles assignedFiles = db.AssignedFiles.Find(id);
+            db.AssignedFiles.Remove(assignedFiles);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

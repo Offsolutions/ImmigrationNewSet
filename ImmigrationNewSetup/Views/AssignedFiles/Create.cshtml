@@ -1,0 +1,105 @@
+﻿
+@using ImmigrationNewSetup.Models;
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    dbcontext db = new dbcontext();
+    var stud = db.studentdetails.ToList();
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "AssignedFiles", FormMethod.Post, new { name = "myform" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Assign Files</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <label>Users</label>
+                <select id="session" name="username" class="form-control">
+                    <option>Select User</option>
+                    @foreach (var ab in db.Accounts.ToList())
+                    {
+                        <option value="@ab.Id">@ab.name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-6">
+                <input type="submit" value="Submit" class="btn btn-danger" style="margin-top:30px" />
+
+            </div>
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover" id="table1">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Student Id 
+                                </th>
+                                <th>
+                                    Tracking ID
+                                </th>
+                                <th>
+                                   Name
+                                </th>
+                                <th>
+                                   Father Name
+                                </th>
+                                <th>
+                                    Phone
+                                </th>
+                                <th>
+                                    Address
+                                </th>
+                                <th>
+                                    Intake
+                                </th>
+                                <th>
+                                    Date
+                                </th>
+                            </tr>
+                        </thead>
+                        @foreach (var item in stud)
+                         {
+                            <tr>
+                                <td>
+                                    <input id="Checkbox2" type="checkbox" name="StudentId" value="@item.StudentId" checked="checked" />
+                                    @Html.DisplayFor(modelItem => item.StudentId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TrackingID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.fathername)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.phone)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.address)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.intake) @Html.DisplayFor(model => item.year)
+                                </td>
+                                <td>
+                                    @Convert.ToDateTime(item.date).ToString("dd/MM/yyyy")
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*}
+        @using (Html.BeginForm("Create", "AssignedFiles", FormMethod.Post, new { name = "myform" }))
+        {*@
+
+
+}

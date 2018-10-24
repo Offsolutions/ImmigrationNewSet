@@ -196,6 +196,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\AssignedFilesController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\studentdetailsController.cs" />
     <Compile Include="Controllers\StudentdocsController.cs" />
@@ -503,6 +504,11 @@
     <Content Include="Views\Countries\Details.cshtml" />
     <Content Include="Views\Countries\Edit.cshtml" />
     <Content Include="Views\Countries\Index.cshtml" />
+    <Content Include="Views\AssignedFiles\Delete.cshtml" />
+    <Content Include="Views\AssignedFiles\Details.cshtml" />
+    <Content Include="Views\AssignedFiles\Edit.cshtml" />
+    <Content Include="Views\AssignedFiles\Index.cshtml" />
+    <Content Include="Views\AssignedFiles\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

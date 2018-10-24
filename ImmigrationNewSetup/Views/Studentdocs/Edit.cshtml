@@ -37,7 +37,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.profile, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.profile, new { htmlAttributes = new { @class = "form-control" } })
+                <input id="file" type="file" title="search image" class="form-control" name="file" />
+                @Html.Label("460px X 290px", htmlAttributes: new { @class = "control-label" })
                 @Html.ValidationMessageFor(model => model.profile, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -45,7 +46,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.education, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.education, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="file" title="search image" id="file1" name="file1" multiple class="form-control" />
                 @Html.ValidationMessageFor(model => model.education, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -53,7 +54,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.family, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.family, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="file" title="search image" id="file2" name="file2" multiple class="form-control" />
                 @Html.ValidationMessageFor(model => model.family, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -61,7 +62,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.other, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.other, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="file" title="search image" id="file3" name="file3" multiple class="form-control" />
                 @Html.ValidationMessageFor(model => model.other, "", new { @class = "text-danger" })
             </div>
         </div>

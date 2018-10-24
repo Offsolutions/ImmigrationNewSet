@@ -1,8 +1,12 @@
 ﻿@model IEnumerable<ImmigrationNewSetup.Models.Account>
+@using onlineportal.Areas.AdminPanel.Models;
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var active = "Active";
+    var Deactive = "Deactive";
+    Helper Help = new Helper();
 }
 
 <h2><b>Index</b></h2>
@@ -60,13 +64,22 @@
                     @Html.DisplayFor(modelItem => item.login)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.password)
+                    @{ var pass = Help.DecryptData(item.password);}
+                    @pass.ToString()
+                    @*@Html.DisplayFor(modelItem => item.password)*@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.UserType)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.status)
+                    @if (item.status == true)
+                    {
+                        <span class="label label-success">@active.ToString()</span>
+                    }
+                    else
+                    {
+                        <span class="label label-danger">@Deactive.ToString()</span>
+                    }
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "label label-warning" }) |

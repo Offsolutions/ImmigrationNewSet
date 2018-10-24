@@ -1,8 +1,9 @@
 ﻿@model ImmigrationNewSetup.Models.studentdetail
-
+@using ImmigrationNewSetup.Models;
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    dbcontext db = new dbcontext();
 }
 
 <h2>Details</h2>
@@ -172,7 +173,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.uid)
+            @{ var username = db.Accounts.Where(c => c.Id == Model.uid).FirstOrDefault().name;}
+            @username.ToString()
         </dd>
 
         <dt>
@@ -210,6 +212,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentId }, new { @class = "btn btn-danger" }) |
      @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
 </p>

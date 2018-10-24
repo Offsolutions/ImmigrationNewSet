@@ -68,7 +68,7 @@ namespace ImmigrationNewSetup.Models
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone No.")]
         public string phone { get; set; }
-        [Required(ErrorMessage = "Please Enter Your 10 Digit Mobile no")]
+        //[Required(ErrorMessage = "Please Enter Your 10 Digit Mobile no")]
         [DataType(DataType.PhoneNumber)]
         [Display(Name = "Phone 2")]
         public string phone2 { get; set; }
@@ -103,8 +103,8 @@ namespace ImmigrationNewSetup.Models
         public string note { get; set; }
         [Display(Name = "ITR")]
         public string itr { get; set; }
-        [Display(Name = "User")]
-        public string uid { get; set; }
+        [Display(Name = "Entry By")]
+        public int uid { get; set; }
        
         [Display(Name = "Tracking Id")]
         public string TrackingID { get; set; }
@@ -158,8 +158,7 @@ namespace ImmigrationNewSetup.Models
     public class Studentdocs
     {
         [Key]
-        public int Id { get; set; }
-        
+        public int Id { get; set; }    
         public int StudentId { get; set; }
         [Display(Name = "Date")]
         [DataType(DataType.Date)]
@@ -180,5 +179,20 @@ namespace ImmigrationNewSetup.Models
         public int Id { get; set; }
         [Display(Name = "Country Name")]
         public string Name { get; set; }
+    }
+    public class AssignedFiles
+    {
+        [Key]
+        public int Id { get; set; }
+        [Display(Name = "Assigned To")]
+        public int UserID { get; set; }
+        [Display(Name = "Student")]
+        public int StudentId { get; set; }
+        [Display(Name = "Assigned By")]
+        public int uid { get; set; }
+        [Display(Name = "Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime date { get; set; }
     }
 }

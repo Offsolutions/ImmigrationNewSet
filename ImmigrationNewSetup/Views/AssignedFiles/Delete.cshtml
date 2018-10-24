@@ -1,0 +1,60 @@
+﻿@model ImmigrationNewSetup.Models.AssignedFiles
+@using ImmigrationNewSetup.Models;
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    dbcontext db = new dbcontext();
+
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AssignedFiles</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentId)
+        </dt>
+
+        <dd>
+            @{ var studentname = db.studentdetails.Where(x => x.StudentId == Model.StudentId).FirstOrDefault().name;}
+            @studentname.ToString()
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserID)
+        </dt>
+
+        <dd>
+            @{ var assigned = db.Accounts.Where(a => a.Id == Model.UserID).FirstOrDefault().name;}
+            @assigned.ToString()
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.uid)
+        </dt>
+
+        <dd>
+            @{ var username = db.Accounts.Where(c => c.Id == Model.uid).FirstOrDefault().name;}
+            @username.ToString()
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Convert.ToDateTime(Model.date).ToString("dd/MM/yyyy")
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+	    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
+        </div>
+    }
+</div>

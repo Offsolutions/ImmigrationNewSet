@@ -1,0 +1,53 @@
+﻿@model ImmigrationNewSetup.Models.AssignedFiles
+@using ImmigrationNewSetup.Models;
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    dbcontext db = new dbcontext();
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AssignedFiles</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentId)
+        </dt>
+
+        <dd>
+            @{ var studentname = db.studentdetails.Where(x => x.StudentId == Model.StudentId).FirstOrDefault().name;}
+            @studentname.ToString()
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UserID)
+        </dt>
+
+        <dd>
+            @{ var assigned = db.Accounts.Where(a => a.Id == Model.UserID).FirstOrDefault().name;}
+            @assigned.ToString()
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.uid)
+        </dt>
+
+        <dd>
+            @{ var username = db.Accounts.Where(c => c.Id == Model.uid).FirstOrDefault().name;}
+            @username.ToString()
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Convert.ToDateTime(Model.date).ToString("dd/MM/yyyy")
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+     @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
+</p>
