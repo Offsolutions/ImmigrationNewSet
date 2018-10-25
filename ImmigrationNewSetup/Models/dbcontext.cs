@@ -24,5 +24,7 @@ namespace ImmigrationNewSetup.Models
         public System.Data.Entity.DbSet<ImmigrationNewSetup.Models.Country> Countries { get; set; }
 
         public System.Data.Entity.DbSet<ImmigrationNewSetup.Models.AssignedFiles> AssignedFiles { get; set; }
+
+        public System.Data.Entity.DbSet<ImmigrationNewSetup.Models.Logs> Logs { get; set; }
     }
 }

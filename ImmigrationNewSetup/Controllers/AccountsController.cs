@@ -147,6 +147,7 @@ namespace ImmigrationNewSetup.Controllers
             dbcontext db = new dbcontext();
             var passw = Help.EncryptData(model.password);
             var dataItem = db.Accounts.Where(x => x.login == model.login && x.password == passw).FirstOrDefault();
+            // var dataItem = db.Accounts.FirstOrDefault(x => x.login == model.login && x.password == passw);
             if (dataItem != null)
             {
                 FormsAuthentication.SetAuthCookie(dataItem.login, false);
@@ -162,7 +163,6 @@ namespace ImmigrationNewSetup.Controllers
                     Session["User"] = dataItem.Id;
 
                     return RedirectToAction("Index", "Default");
-
                 }
             }
             else

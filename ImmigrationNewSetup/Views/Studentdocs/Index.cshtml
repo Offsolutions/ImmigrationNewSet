@@ -1,8 +1,9 @@
 ﻿@model IEnumerable<ImmigrationNewSetup.Models.Studentdocs>
-
+@using ImmigrationNewSetup.Models;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    dbcontext db = new dbcontext();
 }
 
 <h2><b>Index</b></h2>
@@ -43,14 +44,14 @@
                         @Html.DisplayFor(modelItem => item.StudentId)
                     </td>
                     <td>
-
+                        @{ var tracking = db.studentdetails.FirstOrDefault(a => a.StudentId == item.StudentId).TrackingID;}
+                        @tracking
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.date)
+                        @Convert.ToDateTime(item.date).ToString("dd-MM-yyyy")
                     </td>
                     <td>
-                        <img src="~/UploadedFiles/@item.profile" alt="Profile Pic" style="width:100px;" />
-                        @*@Html.DisplayFor(modelItem => item.profile)*@
+                        <img src="~/UploadedFiles/@item.profile" alt="Profile Pic" style="width:80px;" />
                     </td>
                     @*<td>
                         @Html.DisplayFor(modelItem => item.education)

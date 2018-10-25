@@ -198,6 +198,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\AssignedFilesController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
+    <Compile Include="Controllers\LogsController.cs" />
     <Compile Include="Controllers\studentdetailsController.cs" />
     <Compile Include="Controllers\StudentdocsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -509,6 +510,11 @@
     <Content Include="Views\AssignedFiles\Edit.cshtml" />
     <Content Include="Views\AssignedFiles\Index.cshtml" />
     <Content Include="Views\AssignedFiles\Create.cshtml" />
+    <Content Include="Views\Logs\Create.cshtml" />
+    <Content Include="Views\Logs\Delete.cshtml" />
+    <Content Include="Views\Logs\Details.cshtml" />
+    <Content Include="Views\Logs\Edit.cshtml" />
+    <Content Include="Views\Logs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
