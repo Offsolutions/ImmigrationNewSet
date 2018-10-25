@@ -97,6 +97,7 @@
                         @Html.ActionLink("Details", "Details", new { id = item.StudentId }, new { @class = "label label-primary" }) |
                         @Html.ActionLink("Delete", "Delete", new { id = item.StudentId }, new { @class = "label label-danger" }) |
                         @Html.ActionLink("Docs", "Docs", new { student = item.StudentId }, new { @class = "label label-success" })
+                        @Html.ActionLink("Logs","Index", "Logs","", new { @class = "label label-primary" })
                     </td>
                 </tr>
             }

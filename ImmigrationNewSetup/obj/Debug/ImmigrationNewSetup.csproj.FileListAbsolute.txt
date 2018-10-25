@@ -164,3 +164,4 @@ G:\new github\ImmigrationNewSet\ImmigrationNewSetup\obj\Debug\ImmigrationNewSetu
 G:\new github\ImmigrationNewSet\ImmigrationNewSetup\obj\Debug\ImmigrationNewSetup.csproj.GenerateResource.Cache
 G:\new github\ImmigrationNewSet\ImmigrationNewSetup\obj\Debug\ImmigrationNewSetup.dll
 G:\new github\ImmigrationNewSet\ImmigrationNewSetup\obj\Debug\ImmigrationNewSetup.pdb
+G:\new github\ImmigrationNewSet\ImmigrationNewSetup\obj\Debug\ImmigrationNewSetup.csprojResolveAssemblyReference.cache

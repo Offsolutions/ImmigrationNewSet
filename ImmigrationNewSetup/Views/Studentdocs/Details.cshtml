@@ -16,6 +16,7 @@
         </dt>
 
         <dd>
+
             @Html.DisplayFor(model => model.StudentId)
         </dd>
 
@@ -24,7 +25,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.date)
+            @Convert.ToDateTime(Model.date).ToString("dd/MM/yyyy")
         </dd>
 
         <dt>
@@ -32,7 +33,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.profile)
+            <img src="~/UploadedFiles/@Model.profile" alt="Profile pic" style="width:100px;" />
         </dd>
 
         <dt>
@@ -40,28 +41,40 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.education)
+            @{ string[] education = Model.education.Split(',');
+                foreach (var mm in education.ToList())
+                {
+                    <img src="~/UploadedFiles/@mm" alt="education records" style="width:150px;" />
+                }
+            }
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.family)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.family)
+            @{ string[] familydocs = Model.family.Split(',');
+                foreach (var mm1 in familydocs.ToList())
+                {
+                    <img src="~/UploadedFiles/@mm1" alt="family records" style="width:150px;" />
+                }
+            }
         </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.other)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.other)
+            @{ string[] others = Model.other.Split(',');
+                foreach (var mm2 in others.ToList())
+                {
+                    <img src="~/UploadedFiles/@mm2" alt="other records" style="width:150px;" />
+                }
+            }
         </dd>
 
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-danger" }) |
-     @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
 </p>

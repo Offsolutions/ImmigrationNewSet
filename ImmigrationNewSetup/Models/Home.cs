@@ -195,4 +195,18 @@ namespace ImmigrationNewSetup.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime date { get; set; }
     }
+    public class Logs
+    {
+        [Key]
+        public int Id { get; set; }
+        [Display(Name ="Inserted By")]
+        public int uid { get; set; }
+        [Display(Name ="Message")]
+        public string message { get; set; }
+        [Display(Name = "Date")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime date { get; set; }
+
+    }
 }
