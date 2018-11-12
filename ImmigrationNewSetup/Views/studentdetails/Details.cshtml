@@ -1,9 +1,8 @@
 ﻿@model ImmigrationNewSetup.Models.studentdetail
-@using ImmigrationNewSetup.Models;
+
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
-    dbcontext db = new dbcontext();
 }
 
 <h2>Details</h2>
@@ -12,6 +11,22 @@
     <h4>studentdetail</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Agents.AgentName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Agents.AgentName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Countries.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Countries.Name)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.name)
         </dt>
@@ -25,7 +40,7 @@
         </dt>
 
         <dd>
-            @Convert.ToDateTime(Model.dob).ToString("dd/MM/yyyy")
+            @Html.DisplayFor(model => model.dob)
         </dd>
 
         <dt>
@@ -67,6 +82,7 @@
         <dd>
             @Html.DisplayFor(model => model.phone)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.phone2)
         </dt>
@@ -74,6 +90,7 @@
         <dd>
             @Html.DisplayFor(model => model.phone2)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.email)
         </dt>
@@ -147,19 +164,29 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.filetype)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.filetype)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.intake)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.intake) @Html.DisplayFor(model => model.year)
+            @Html.DisplayFor(model => model.intake)
         </dd>
+
         <dt>
-            @Html.DisplayNameFor(model => model.itr)
+            @Html.DisplayNameFor(model => model.year)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.itr)
+            @Html.DisplayFor(model => model.year)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.note)
         </dt>
@@ -169,12 +196,19 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.itr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.itr)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.uid)
         </dt>
 
         <dd>
-            @{ var username = db.Accounts.Where(c => c.Id == Model.uid).FirstOrDefault().name;}
-            @username.ToString()
+            @Html.DisplayFor(model => model.uid)
         </dd>
 
         <dt>
@@ -186,19 +220,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Editingdate)
-        </dt>
-
-        <dd>
-            @Convert.ToDateTime(Model.Editingdate).ToString("dd/MM/yyyy")
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.date)
         </dt>
 
         <dd>
-            @Convert.ToDateTime(Model.date).ToString("dd/MM/yyyy")
+            @Html.DisplayFor(model => model.date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Editingdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Editingdate)
         </dd>
 
         <dt>
@@ -212,6 +246,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentId }, new { @class = "btn btn-danger" }) |
-     @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentId }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

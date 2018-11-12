@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -15,19 +16,19 @@ namespace ImmigrationNewSetup.Controllers
         private dbcontext db = new dbcontext();
 
         // GET: Countries
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(db.Countries.ToList());
+            return View(await db.Countries.ToListAsync());
         }
 
         // GET: Countries/Details/5
-        public ActionResult Details(int? id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = db.Countries.Find(id);
+            Country country = await db.Countries.FindAsync(id);
             if (country == null)
             {
                 return HttpNotFound();
@@ -46,12 +47,12 @@ namespace ImmigrationNewSetup.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] Country country)
+        public async Task<ActionResult> Create([Bind(Include = "CountryId,Name")] Country country)
         {
             if (ModelState.IsValid)
             {
                 db.Countries.Add(country);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -59,13 +60,13 @@ namespace ImmigrationNewSetup.Controllers
         }
 
         // GET: Countries/Edit/5
-        public ActionResult Edit(int? id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = db.Countries.Find(id);
+            Country country = await db.Countries.FindAsync(id);
             if (country == null)
             {
                 return HttpNotFound();
@@ -78,25 +79,25 @@ namespace ImmigrationNewSetup.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] Country country)
+        public async Task<ActionResult> Edit([Bind(Include = "CountryId,Name")] Country country)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(country).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(country);
         }
 
         // GET: Countries/Delete/5
-        public ActionResult Delete(int? id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Country country = db.Countries.Find(id);
+            Country country = await db.Countries.FindAsync(id);
             if (country == null)
             {
                 return HttpNotFound();
@@ -107,11 +108,11 @@ namespace ImmigrationNewSetup.Controllers
         // POST: Countries/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Country country = db.Countries.Find(id);
+            Country country = await db.Countries.FindAsync(id);
             db.Countries.Remove(country);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 

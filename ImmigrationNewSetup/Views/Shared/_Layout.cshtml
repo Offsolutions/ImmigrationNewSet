@@ -18,7 +18,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <link href="~/Content/chosen.min.css" rel="stylesheet" />
 
     <link href="~/assets/css/style.css" rel="stylesheet" />
 </head>
@@ -78,18 +78,18 @@
                                 </li>
                                 @*<li>
                                     <a href="@Url.Action("Index","studentdatas")"><i class="fa fa-desktop"></i> Student Registration</a>
-                                </li>
+                                </li>*@
                                 <li class="parent">
                                     <a href="#"><span>Setting</span></a>
                                     <ul class="sub-menu">
                                         <li>
-                                            <a href="@Url.Action("Index","rooms")"><i class="fa fa-desktop"></i> Rooms</a>
+                                            <a href="@Url.Action("Index","Agents")"><i class="fa fa-desktop"></i> Agents</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="@Url.Action("Index","Logs")"><i class="fa fa-desktop"></i> Fees Report</a>
-                                </li>*@
+                                    <a href="@Url.Action("Index","PackageDetails")"><i class="fa fa-desktop"></i> Package</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -166,5 +166,6 @@ tinymce.init({
       '//www.tinymce.com/css/codepen.min.css'
     ]
 });</script>
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
 </body>
 </html>

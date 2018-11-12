@@ -1,0 +1,127 @@
+﻿@model ImmigrationNewSetup.Models.studentdetail
+@using ImmigrationNewSetup.Models
+@{
+    ViewBag.Title = "FullDetails";
+    Layout = "~/Views/Shared/Staff.cshtml";
+    dbcontext db = new dbcontext();
+    var dd =db.Studentdocs.ToList();
+
+}
+
+<h2>FullDetails</h2>
+
+<div>
+    <h4>studentdetail</h4>
+    <hr />
+    
+    <div class="col-md-8">
+       
+            <div class="gallery-container" style="position: relative; height: 555.718px;">
+                @foreach (var a in dd)
+                {
+                    <div class="item" style="position: absolute; left: 0px; top: 0px;">
+                        <div class="photo">
+                            <div class="img">
+                                <img src="~/UploadedFiles/@a.education" alt="Gallery Image">
+                                <div class="over">
+                                    <div class="info-wrapper">
+                                        <div class="info">
+                                            <div class="title">Boats On The Ocean</div>
+                                            <div class="date">Jun 23 2018</div>
+                                            <div class="description">Vestibulum lectus nulla, maximus in eros non, tristique consectetur.</div>
+                                            <div class="func"><a href="#"><i class="icon mdi mdi-link"></i></a><a class="image-zoom" href="~/UploadedFiles/@a.education"><i class="icon mdi mdi-search"></i></a></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                
+                
+                
+            </div>
+        
+    </div>
+    <div class="col-md-4">
+
+        <div class="user-info-list card">
+            <div class="card-header card-header-divider">About Me<span class="card-subtitle">I am a web developer and designer based in Montreal - Canada, I like read books, good music and nature.</span></div>
+            <div class="card-body">
+                <table class="no-border no-strip skills">
+                    <tbody class="no-border-x no-border-y">
+                        <tr>
+                            <td class="icon"><span class="mdi mdi-case"></span></td>
+                            <td class="item">@Html.DisplayNameFor(model => model.name)<span class="icon s7-portfolio"></span></td>
+                            <td>@Html.DisplayFor(model => model.name)</td>
+                        </tr>
+                        <tr>
+                            <td class="icon"><span class="mdi mdi-cake"></span></td>
+                            <td class="item">@Html.DisplayNameFor(model => model.fathername)<span class="icon s7-gift"></span></td>
+                            <td>@Html.DisplayFor(model => model.fathername)</td>
+                        </tr>
+                        <tr>
+                            <td class="icon"><span class="mdi mdi-smartphone-android"></span></td>
+                            <td class="item">@Html.DisplayNameFor(model => model.address)<span class="icon s7-phone"></span></td>
+                            <td>@Html.DisplayFor(model => model.address)</td>
+                        </tr>
+                        <tr>
+                            <td class="icon"><span class="mdi mdi-globe-alt"></span></td>
+                            <td class="item">@Html.DisplayNameFor(model => model.phone)<span class="icon s7-map-marker"></span></td>
+                            <td>@Html.DisplayFor(model => model.phone)</td>
+                        </tr>
+                        <tr>
+                            <td class="icon"><span class="mdi mdi-pin"></span></td>
+                            <td class="item">@Html.DisplayNameFor(model => model.qualification)<span class="icon s7-global"></span></td>
+                            <td>@Html.DisplayFor(model => model.qualification)</td>
+                        </tr>
+
+                        <tr>
+                            <td class="icon"><span class="mdi mdi-pin"></span></td>
+                            <td class="item">@Html.DisplayNameFor(model => model.gapdetail)<span class="icon s7-global"></span></td>
+                            <td>@Html.DisplayFor(model => model.gapdetail)</td>
+                        </tr>
+                        <tr>
+                            <td class="icon"><span class="mdi mdi-pin"></span></td>
+                            <td class="item">@Html.DisplayNameFor(model => model.refusaldetail)<span class="icon s7-global"></span></td>
+                            <td>@Html.DisplayFor(model => model.refusaldetail)</td>
+                        </tr>
+                        <tr>
+                            <td class="icon"><span class="mdi mdi-pin"></span></td>
+                            <td class="item">@Html.DisplayNameFor(model => model.itr)<span class="icon s7-global"></span></td>
+                            <td>@Html.DisplayFor(model => model.itr)</td>
+                        </tr>
+                        <tr>
+                            <td class="icon"><span class="mdi mdi-pin"></span></td>
+                            <td class="item">@Html.DisplayNameFor(model => model.country)<span class="icon s7-global"></span></td>
+                            <td>@Html.DisplayFor(model => model.country)</td>
+                        </tr>
+
+
+                        <tr>
+                            <td class="icon"><span class="mdi mdi-pin"></span></td>
+                            <td class="item">@Html.DisplayNameFor(model => model.intake)<span class="icon s7-global"></span></td>
+                            <td>@Html.DisplayFor(model => model.intake)</td>
+                        </tr>
+                        <tr>
+                            <td class="icon"><span class="mdi mdi-pin"></span></td>
+                            <td class="item">@Html.DisplayNameFor(model => model.year)<span class="icon s7-global"></span></td>
+                            <td>@Html.DisplayFor(model => model.year)</td>
+                        </tr>
+                        <tr>
+                            <td class="icon"><span class="mdi mdi-pin"></span></td>
+                            <td class="item">@Html.DisplayNameFor(model => model.note)<span class="icon s7-global"></span></td>
+                            <td>@Html.DisplayFor(model => model.note)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

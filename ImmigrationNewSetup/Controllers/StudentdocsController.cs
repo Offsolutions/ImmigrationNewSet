@@ -56,44 +56,43 @@ namespace ImmigrationNewSetup.Controllers
             if (ModelState.IsValid)
             {
                 string edu=null, fam=null, oth=null;
-                studentdocs.profile = Help.uploadfile(file);
+                
                 foreach(var a in file1)
                 {
-                    if(edu==null)
-                    {
+                    
                         edu = Help.uploadfile(a);
-                    }
-                    else
-                    {
-                        edu +="," + Help.uploadfile(a);
-                    }
+                    studentdocs.education = edu;
+                    studentdocs.family = "";
+                    studentdocs.other = "";
+                    studentdocs.StudentId = student;
+                    db.Studentdocs.Add(studentdocs);
+                    db.SaveChanges();
+
                 }
                 foreach (var b in file2)
                 {
-                    if (fam == null)
-                    {
+                    
                         fam = Help.uploadfile(b);
-                    }
-                    else
-                    {
-                        fam += "," + Help.uploadfile(b);
-                    }
+                    studentdocs.education = "";
+                    studentdocs.family = fam;
+                    studentdocs.other = "";
+                    studentdocs.StudentId = student;
+                    db.Studentdocs.Add(studentdocs);
+                    db.SaveChanges();
+
                 }
                 foreach (var c in file3)
                 {
-                    if (oth == null)
-                    {
                         oth = Help.uploadfile(c);
-                    }
-                    else
-                    {
-                        oth += "," + Help.uploadfile(c);
-                    }
+                    studentdocs.education = "";
+                    studentdocs.family = "";
+                    studentdocs.other = oth;
+                    studentdocs.StudentId = student;
+                    db.Studentdocs.Add(studentdocs);
+                    db.SaveChanges();
+
                 }
-                studentdocs.education = edu;
-                studentdocs.family = fam;
-                studentdocs.other = oth;
-                studentdocs.StudentId = student;
+                studentdocs.profile = Help.uploadfile(file);
                 db.Studentdocs.Add(studentdocs);
                 db.SaveChanges();
                 return RedirectToAction("Index");

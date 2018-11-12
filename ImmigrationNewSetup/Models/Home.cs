@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -35,6 +36,7 @@ namespace ImmigrationNewSetup.Models
         public string UserType { get; set; }
         [Display(Name = "Status")]
         public bool status { get; set; }
+        public IEnumerable<Account> AccountCollection { get; set; }
     }
     public enum UserType
     {
@@ -94,7 +96,8 @@ namespace ImmigrationNewSetup.Models
         [Display(Name = "File Type")]
         public string filetype { get; set; }
         [Display(Name = "Country Name")]
-        public string country { get; set; }
+        public int CountryId { get; set; }
+        public virtual Country Countries { get; set; }
         [Display(Name = "Intake")]
         public string intake { get; set; }
         [Display(Name = "Year")]
@@ -119,6 +122,11 @@ namespace ImmigrationNewSetup.Models
         public DateTime Editingdate { get; set; }
         [Display(Name = "Status")]
         public bool Status { get; set; }
+        [DisplayName("Agent")]
+        public int AgentId { get; set; }
+        public virtual Agents Agents { get; set; }
+      
+
     }
     public enum gender
     {
@@ -176,9 +184,10 @@ namespace ImmigrationNewSetup.Models
     public class Country
     {
         [Key]
-        public int Id { get; set; }
+        public int CountryId { get; set; }
         [Display(Name = "Country Name")]
         public string Name { get; set; }
+        public virtual ICollection<studentdetail> StudentDetails { get; set; }
     }
     public class AssignedFiles
     {
@@ -208,5 +217,26 @@ namespace ImmigrationNewSetup.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime date { get; set; }
 
+    }
+    public class Agents
+    {
+        [Key]
+        public int AgentId { get; set; }
+        [Display(Name = "Agent Name")]
+       [Required]
+        public string AgentName { get; set; }
+        public virtual ICollection<studentdetail> StudentDetails { get; set; }
+
+    }
+    public class PackageDetails
+    {
+        [Key]
+        public int PackageId { get; set; }
+        [Display(Name = "Package Name")]
+        [Required]
+        public string PackageName { get; set; }
+        [Required]
+        public string Description { get; set; }
+        
     }
 }

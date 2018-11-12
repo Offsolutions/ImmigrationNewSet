@@ -171,7 +171,40 @@ namespace ImmigrationNewSetup.Controllers
                 return View();
             }
         }
+        public ActionResult StaffLogin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult StaffLogin(Account model, string returnUrl)
+        {
+            dbcontext db = new dbcontext();
+            var passw = Help.EncryptData(model.password);
+            var dataItem = db.Accounts.Where(x => x.login == model.login && x.password == passw && x.UserType==model.UserType).FirstOrDefault();
+            // var dataItem = db.Accounts.FirstOrDefault(x => x.login == model.login && x.password == passw);
+            if (dataItem != null)
+            {
+                FormsAuthentication.SetAuthCookie(dataItem.login, false);
 
+                if (Url.IsLocalUrl(returnUrl) && returnUrl.Length > 1 && returnUrl.StartsWith("/")
+                         && !returnUrl.StartsWith("//") && !returnUrl.StartsWith("/\\"))
+                {
+                    return Redirect(returnUrl);
+                }
+                else
+                {
+                    TempData["Success"] = "Login Successfully";
+                    Session["User"] = dataItem.Id;
+
+                    return RedirectToAction("Index", "StaffDashboard");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Invalid user/pass");
+                return View();
+            }
+        }
         //[Authorize]
         public ActionResult SignOut()
         {

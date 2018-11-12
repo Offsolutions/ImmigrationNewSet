@@ -17,7 +17,7 @@ namespace ImmigrationNewSetup.Controllers
         // GET: AssignedFiles
         public ActionResult Index()
         {
-            return View(db.AssignedFiles.ToList());
+            return View(db.AssignedFiles.ToList().OrderBy(x=>x.date));
         }
 
         // GET: AssignedFiles/Details/5

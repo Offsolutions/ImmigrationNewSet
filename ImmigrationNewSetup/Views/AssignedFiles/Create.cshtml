@@ -4,9 +4,10 @@
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
     dbcontext db = new dbcontext();
-    var stud = db.studentdetails.ToList();
+    var stud = db.studentdetails.ToList().OrderBy(x=>x.date);
+    Account emp = new Account();
+    emp.AccountCollection = db.Accounts.ToList();
 }
-
 <h2>Create</h2>
 
 @using (Html.BeginForm("Create", "AssignedFiles", FormMethod.Post, new { name = "myform" }))
@@ -17,14 +18,8 @@
         <hr />
         <div class="row">
             <div class="col-md-6">
-                <label>Users</label>
-                <select id="session" name="username" class="form-control">
-                    <option>Select User</option>
-                    @foreach (var ab in db.Accounts.ToList())
-                    {
-                        <option value="@ab.Id">@ab.name</option>
-                    }
-                </select>
+                <label>Select Users To Assign Files</label>
+                @Html.DropDownListFor(model => emp.name, new SelectList(emp.AccountCollection, "Id", "name"), "Select User", new { id = "normalDropDown" })
             </div>
             <div class="col-md-6">
                 <input type="submit" value="Submit" class="btn btn-danger" style="margin-top:30px" />
@@ -65,7 +60,7 @@
                          {
                             <tr>
                                 <td>
-                                    <input id="Checkbox2" type="checkbox" name="StudentId" value="@item.StudentId" checked="checked" />
+                                    <input id="Checkbox2" type="checkbox" name="StudentId" value="@item.StudentId" />
                                     @Html.DisplayFor(modelItem => item.StudentId)
                                 </td>
                                 <td>
@@ -103,3 +98,19 @@
 
 
 }
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+        $(function () {
+          //  normal dropdown
+            $("#normalDropDown").chosen({
+                no_results_text: "Oops, nothing found!"
+            });
+
+           // multiselect DropDown
+            $("#multiSelectDropDown").chosen({
+                width : "100%"
+            });
+        });
+
+</script>

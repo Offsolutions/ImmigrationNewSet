@@ -196,9 +196,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\AgentsController.cs" />
     <Compile Include="Controllers\AssignedFilesController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\LogsController.cs" />
+    <Compile Include="Controllers\PackageDetailsController.cs" />
+    <Compile Include="Controllers\StaffDashboardController.cs" />
     <Compile Include="Controllers\studentdetailsController.cs" />
     <Compile Include="Controllers\StudentdocsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -370,6 +373,8 @@
     <Content Include="Content\alertifyjs\themes\semantic.rtl.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\chosen.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -459,6 +464,7 @@
     <Content Include="assets\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="assets\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -488,11 +494,6 @@
     <Content Include="Views\Accounts\Details.cshtml" />
     <Content Include="Views\Accounts\Edit.cshtml" />
     <Content Include="Views\Accounts\Index.cshtml" />
-    <Content Include="Views\studentdetails\Create.cshtml" />
-    <Content Include="Views\studentdetails\Delete.cshtml" />
-    <Content Include="Views\studentdetails\Details.cshtml" />
-    <Content Include="Views\studentdetails\Edit.cshtml" />
-    <Content Include="Views\studentdetails\Index.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Accounts\Login.cshtml" />
     <Content Include="Views\Studentdocs\Create.cshtml" />
@@ -500,11 +501,6 @@
     <Content Include="Views\Studentdocs\Details.cshtml" />
     <Content Include="Views\Studentdocs\Edit.cshtml" />
     <Content Include="Views\Studentdocs\Index.cshtml" />
-    <Content Include="Views\Countries\Create.cshtml" />
-    <Content Include="Views\Countries\Delete.cshtml" />
-    <Content Include="Views\Countries\Details.cshtml" />
-    <Content Include="Views\Countries\Edit.cshtml" />
-    <Content Include="Views\Countries\Index.cshtml" />
     <Content Include="Views\AssignedFiles\Delete.cshtml" />
     <Content Include="Views\AssignedFiles\Details.cshtml" />
     <Content Include="Views\AssignedFiles\Edit.cshtml" />
@@ -515,6 +511,32 @@
     <Content Include="Views\Logs\Details.cshtml" />
     <Content Include="Views\Logs\Edit.cshtml" />
     <Content Include="Views\Logs\Index.cshtml" />
+    <Content Include="Views\Accounts\StaffLogin.cshtml" />
+    <Content Include="Views\Shared\Staff.cshtml" />
+    <Content Include="Views\StaffDashboard\Index.cshtml" />
+    <Content Include="Views\StaffDashboard\FileDetails.cshtml" />
+    <Content Include="Views\StaffDashboard\FullDetails.cshtml" />
+    <Content Include="Views\StaffDashboard\Logs.cshtml" />
+    <Content Include="Views\Agents\Create.cshtml" />
+    <Content Include="Views\Agents\Delete.cshtml" />
+    <Content Include="Views\Agents\Details.cshtml" />
+    <Content Include="Views\Agents\Edit.cshtml" />
+    <Content Include="Views\Agents\Index.cshtml" />
+    <Content Include="Views\PackageDetails\Create.cshtml" />
+    <Content Include="Views\PackageDetails\Delete.cshtml" />
+    <Content Include="Views\PackageDetails\Details.cshtml" />
+    <Content Include="Views\PackageDetails\Edit.cshtml" />
+    <Content Include="Views\PackageDetails\Index.cshtml" />
+    <Content Include="Views\studentdetails\Create.cshtml" />
+    <Content Include="Views\studentdetails\Delete.cshtml" />
+    <Content Include="Views\studentdetails\Details.cshtml" />
+    <Content Include="Views\studentdetails\Edit.cshtml" />
+    <Content Include="Views\studentdetails\Index.cshtml" />
+    <Content Include="Views\Countries\Create.cshtml" />
+    <Content Include="Views\Countries\Delete.cshtml" />
+    <Content Include="Views\Countries\Details.cshtml" />
+    <Content Include="Views\Countries\Edit.cshtml" />
+    <Content Include="Views\Countries\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

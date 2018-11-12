@@ -26,5 +26,9 @@ namespace ImmigrationNewSetup.Models
         public System.Data.Entity.DbSet<ImmigrationNewSetup.Models.AssignedFiles> AssignedFiles { get; set; }
 
         public System.Data.Entity.DbSet<ImmigrationNewSetup.Models.Logs> Logs { get; set; }
+
+        public System.Data.Entity.DbSet<ImmigrationNewSetup.Models.Agents> Agents { get; set; }
+
+        public System.Data.Entity.DbSet<ImmigrationNewSetup.Models.PackageDetails> PackageDetails { get; set; }
     }
 }
